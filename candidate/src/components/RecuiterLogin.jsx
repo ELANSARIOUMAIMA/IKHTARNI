@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { assets } from '../assets/assets.js'
 import { AppContext } from '../context/AppContext.jsx'
+import axios from 'axios'
 
 const RecuiterLogin = () => {
     const [state, setState] = useState('Login')
@@ -12,13 +13,34 @@ const RecuiterLogin = () => {
     const [image, setImage] = useState(false)
 
     const [isTextDataSubmited, setIsTextDataSubmited] = useState(false)
-    const {setShowRecuiterLogin}=useContext(AppContext)
+    const {setShowRecuiterLogin,backendUrl,setCompanyToken,setCompanyData}=useContext(AppContext)
 
     const onSubmitHandler = async(e)=>{
         e.preventDefault()
+
+
         if(state=='Sign Up' && !isTextDataSubmited){
             setIsTextDataSubmited(true)
         }
+        // Api calls with axois package
+        try {
+            if (state==="Login") {
+                const{data}=await axios.post(backendUrl+'/api/company/login',{email,password})
+                if(data.success){
+                    console.log(data);
+                    setCompanyData(data.company)
+                    setCompanyToken(data.token)
+                    localStorage.setItem('companyToken',data.token)
+
+                }
+                
+            }
+            
+        } catch (error) {
+            
+        }
+
+
     }
     
     useEffect(()=>{
@@ -60,12 +82,12 @@ const RecuiterLogin = () => {
 
                             <div className="flex border px-4 py-2 items-center rounded-full mt-5 gap-2">
                                 <img src={assets.email_icon} alt="" className="" />
-                                <input onChange={e => setName(e.target.value)} type="email" className="outline-none text-sm" placeholder='Email Id' value={email} required />
+                                <input onChange={e => setEmail(e.target.value)} type="email" className="outline-none text-sm" placeholder='Email Id'  required />
                             </div>
 
                             <div className="flex border px-4 py-2 items-center rounded-full mt-5 gap-2">
                                 <img src={assets.lock_icon} alt="" className="outline-none text-sm" />
-                                <input onChange={e => setName(e.target.value)} type="password" className="outline-none text-sm" placeholder='Password' value={password} required />
+                                <input onChange={e => setPassword(e.target.value)} type="password" className="outline-none text-sm" placeholder='Password'  required />
                             </div>
                         </>
                 }
