@@ -2,8 +2,13 @@ import React, { useContext, useEffect, useState } from 'react'
 import { assets } from '../assets/assets.js'
 import { AppContext } from '../context/AppContext.jsx'
 import axios from 'axios'
+import{useNavigate} from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const RecuiterLogin = () => {
+    const navigate=useNavigate()
+
+    
     const [state, setState] = useState('Login')
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
@@ -20,23 +25,46 @@ const RecuiterLogin = () => {
 
 
         if(state=='Sign Up' && !isTextDataSubmited){
-            setIsTextDataSubmited(true)
+            return setIsTextDataSubmited(true)
         }
         // Api calls with axois package
         try {
             if (state==="Login") {
                 const{data}=await axios.post(backendUrl+'/api/company/login',{email,password})
                 if(data.success){
-                    console.log(data);
                     setCompanyData(data.company)
                     setCompanyToken(data.token)
                     localStorage.setItem('companyToken',data.token)
-
+                    setShowRecuiterLogin(false)
+                    navigate('/dashboard')
+                }   
+                else {
+                    toast.error(data.message)
                 }
-                
+            }
+            else{
+                const formData = new FormData()
+                formData.append('name',name)
+                formData.append('password',password)
+                formData.append('email',email)
+                formData.append('image',image)
+
+                const {data}=await axios.post(backendUrl+'/api/company/register',formData)
+                if(data.success){
+                    setCompanyData(data.company)
+                    setCompanyToken(data.token)
+                    localStorage.setItem('companyToken',data.token)
+                    setShowRecuiterLogin(false)
+                    navigate('/dashboard')
+                }
+                else{
+                    toast.error(data.message)
+                }
+
             }
             
         } catch (error) {
+            toast.error(error.message)
             
         }
 
@@ -61,7 +89,7 @@ const RecuiterLogin = () => {
                         <div className="flex items-center gap-4 my-10">
                             <label htmlFor="image">
                                 <img src={ image? URL.createObjectURL(image):assets.upload_area} alt="" className="w-16 rounded-full" />
-                                <input onChange={e=> setImage(e.target.files[0])} value={image} type="file" id="image" hidden/>  
+                                <input onChange={e=> setImage(e.target.files[0])} type="file" id="image" hidden/>  
 
                             </label>
                             <p className="">Upload Company <br className="" />logo </p>
@@ -103,8 +131,6 @@ const RecuiterLogin = () => {
                 }
                 <img  onClick={e=>setShowRecuiterLogin(false)}src={assets.cross_icon} alt="" className=" absolute top-5 right-5  cursor-pointer " />
             </form>
-
-
         </div>
     )
 }

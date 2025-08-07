@@ -80,7 +80,7 @@ const JobListing = () => {
                     <ul className="space-y-4 text-gray-600">
                         {
                             JobCategories.map((category, index) => (
-                                <li kry={index} className="flex gap-3 items-center">
+                                <li key={index} className="flex gap-3 items-center">
                                     <input
                                         onChange={() => handleCategoryChange(category)}
                                         type="checkbox"
