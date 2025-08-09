@@ -4,6 +4,7 @@ import { v2 as cloudinary } from 'cloudinary'
 import generateToken from "../utils/genarateToken.js";
 import Job from "../models/job.js";
 import JobApplication from '../models/JobApplication.js'
+import JobAplication from "../models/JobApplication.js";
 
 // Registre a new company
 export const registerCompany = async (req, res) => {
@@ -122,8 +123,22 @@ export const postJob = async (req, res) => {
 }
 // Get Company Job Appliccans
 export const getCompanyJobApplicants = async (req, res) => {
-    
+    try {
+        const companyId = req.company._id
 
+        //Find job applications for the user and populate related data
+        const applications = await JobApplication.find({ companyId })
+            .populate('userId', 'name image resume')
+            .populate('jobId', 'title location category level salary')
+            .exec()
+
+        return res.json({ success: true, applications })
+
+
+    } catch (error) {
+        res.json({ success: false, message: error.message })
+
+    }
 }
 // Get Comapny Posted Jobs
 export const getCompanyPostedJobs = async (req, res) => {
@@ -133,9 +148,9 @@ export const getCompanyPostedJobs = async (req, res) => {
         const jobs = await Job.find({ companyId })
 
         //  Adding No. of applicants info in data
-        const jobsData=await Promise.all(jobs.map(async(job)=>{
-            const applicants=await JobApplication.find({jobId:job._id})
-            return {...job.toObject(),applicants:applicants.length}
+        const jobsData = await Promise.all(jobs.map(async (job) => {
+            const applicants = await JobApplication.find({ jobId: job._id })
+            return { ...job.toObject(), applicants: applicants.length }
 
         }))
 
@@ -148,6 +163,17 @@ export const getCompanyPostedJobs = async (req, res) => {
 }
 // Change Job Appliction Status
 export const ChangeJobApplicationsStatus = async (req, res) => {
+    try {
+        const { id, status } = req.body
+        // Find job application data and update status
+        await JobAplication.findOneAndUpdate({ _id: id }, { status })
+        res.json({ success: true, message: 'Status Changed' })
+
+    } catch (error) {
+        res.json({ success: false, message: error.message })
+
+    }
+
 
 }
 
