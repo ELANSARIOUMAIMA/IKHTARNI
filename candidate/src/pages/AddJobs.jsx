@@ -48,11 +48,8 @@ const AddJobs = () => {
     if(!quillRef.current && editorRef.current){
       quillRef.current=new Quill(editorRef.current,{
         theme:'snow',
-
       })
-
     }
-
   },[])
   {/*get the support of reach text we must to install quill*/ }
   return (

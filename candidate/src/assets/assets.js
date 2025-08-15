@@ -7,6 +7,8 @@ import ibm_logo from "./ibm.svg";
 
 import search_icon from "./search_icon.svg";
 import company_icon from "./company_icon.svg";
+import list_check from "./list_check.png";
+
 
 
 import profile_img from "./profile_img.png";
@@ -42,6 +44,7 @@ export const assets = {
     logo,
     search_icon,
     cross_icon,
+    list_check,
     upload_area,
     company_icon,
     resume_not_selected,
@@ -851,7 +854,7 @@ export const jobsData = [
             <li>Excellent attention to detail and ability to work under tight deadlines.</li>
             <li>Good communication skills to articulate testing outcomes and challenges.</li>
         </ol>`,
-        salary: 123000,
+        salary: 50000,
         date: 1729681667114,
         category: "Programming",
     },
@@ -917,7 +920,7 @@ export const jobsData = [
             <li>Experience with container orchestration tools like Kubernetes.</li>
             <li>Good problem-solving skills and attention to detail.</li>
         </ol>`,
-        salary: 102000,
+        salary: 72000,
         date: 1729681667114,
         category: "Programming",
     }

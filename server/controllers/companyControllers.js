@@ -121,7 +121,7 @@ export const postJob = async (req, res) => {
 
 
 }
-// Get Company Job Appliccans
+// Get Company Job Applicant
 export const getCompanyJobApplicants = async (req, res) => {
     try {
         const companyId = req.company._id
@@ -129,10 +129,11 @@ export const getCompanyJobApplicants = async (req, res) => {
         //Find job applications for the user and populate related data
         const applications = await JobApplication.find({ companyId })
             .populate('userId', 'name image resume')
-            .populate('jobId', 'title location category level salary')
+            .populate('jobId', 'title location category level salary ')
+            .populate('score')
             .exec()
-
-        return res.json({ success: true, applications })
+         return res.json({ success: true, applications })
+        
 
 
     } catch (error) {
@@ -140,6 +141,9 @@ export const getCompanyJobApplicants = async (req, res) => {
 
     }
 }
+
+
+
 // Get Comapny Posted Jobs
 export const getCompanyPostedJobs = async (req, res) => {
     try {

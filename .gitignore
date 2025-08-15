@@ -1,1 +1,15 @@
+
+# Node.js
 node_modules
+
+# Python
+#Python automatically creates a folder called __pycache__ every time you run a script
+resume_matcher/venv/
+resume_matcher/__pycache__/
+*.pyc
+
+# Temporary files
+temp_resume.pdf
+
+# Environment files
+.env
