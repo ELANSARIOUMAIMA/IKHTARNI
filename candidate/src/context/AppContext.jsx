@@ -6,7 +6,6 @@ import {useUser,useAuth} from '@clerk/clerk-react'
 export const AppContext=createContext()
 export const AppContextProvider=(props)=>{
     const backendUrl = import.meta.env.VITE_BACKEND_URL
-    const resumeMatcherUrl = import.meta.env.VITE_RESUME_MATCHER_URL
     
     
 
@@ -145,7 +144,6 @@ export const AppContextProvider=(props)=>{
             companyToken,setCompanyToken,
             companyData,setCompanyData,
             backendUrl,
-            resumeMatcherUrl,
             userData,setUserData,
             userApplications,setUserApplications,
             fetchUserData,
