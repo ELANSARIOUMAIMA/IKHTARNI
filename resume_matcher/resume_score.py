@@ -9,7 +9,8 @@ import torch
 from scipy.spatial.distance import cosine
 
 # Initialize SpaCy and BERT
-nlp = spacy.load('en_core_web_sm')
+nlp = spacy.load("en_core_web_sm", disable=["parser", "ner"])
+#nlp = spacy.load('en_core_web_sm')
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 model = BertModel.from_pretrained('bert-base-uncased')
 
