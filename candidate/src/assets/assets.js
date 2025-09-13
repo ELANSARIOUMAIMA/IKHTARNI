@@ -172,8 +172,8 @@ export const jobsData = [
         level: "Senior Level",
         companyId: {
             "_id": "670e4d25ca9fda8f1bf359b9",
-            "name": "Slack",
-            "email": "slack@demo.com",
+            "name": "Leyton",
+            "email": "leyton@gmail.com",
             "image": company_icon,
         },
         description: `
@@ -194,14 +194,14 @@ export const jobsData = [
             <li>Strong understanding of web security and performance optimization.</li>
             <li>Ability to work in an Agile environment.</li>
         </ol>`,
-        salary: 82000,
+        salary: 8200,
         date: 1729681667114,
         category: "Programming",
     },
     {
         _id: '2',
         title: "Data Scientist",
-        location: "Rabat",
+        location: "Casablanca",
         level: "Intermediate Level",
         companyId: {
             "_id": "670e4d25ca9fda8f1bf359b9",
@@ -267,7 +267,7 @@ export const jobsData = [
     {
         _id: '4',
         title: "DevOps Engineer",
-        location: "Fes",
+        location: "Casablanca",
         level: "Senior Level",
         companyId: {
             "_id": "670e4d25ca9fda8f1bf359b9",
