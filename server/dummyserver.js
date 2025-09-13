@@ -13,7 +13,16 @@ import fetch from 'node-fetch';
 import User from './models/User.js';
 import Job from './models/job.js';
 import JobAplication from './models/JobApplication.js';
-import { Query } from 'mongoose';
+
+import dotenv from 'dotenv';
+
+
+
+
+ 
+
+
+dotenv.config({ path: path.resolve('./server/.env') }); // chemin vers ton .env
 
 
 
