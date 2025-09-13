@@ -11,25 +11,15 @@ import connectCloudinary from './config/cloudinary.js'
 import jobRoutes from './routes/jobRoutes.js'
 import userRoutes from'./routes/userRoutes.js'
 import {clerkMiddleware} from '@clerk/express'
-import bodyParser from 'body-parser';
-import fileUpload from 'express-fileupload';
-
-
-import { spawn } from 'child_process';
+import dotenv from 'dotenv';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import fs from 'fs';
-import fetch from 'node-fetch';
-import User from './models/User.js';
-import Job from './models/job.js';
-import JobAplication from './models/JobApplication.js';
-import { Query } from 'mongoose';
+
 
 
  
 
 
-
+dotenv.config({ path: path.resolve('./server/.env') }); // chemin vers ton .env
 
 
 

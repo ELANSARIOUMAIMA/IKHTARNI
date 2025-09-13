@@ -17,8 +17,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # 5. Copier tout le code du projet 
 COPY . .
 
-# 6. Exposer les ports utilisés par tes serveurs Node
+# 6. Donner les droits d’exécution à start.sh
+RUN chmod +x start.sh
+
+# 7. Exposer les ports utilisés par tes serveurs Node
 EXPOSE 5001 5000
 
-# 7. Lancer les deux serveurs Node
+# 8. Lancer les deux serveurs Node
 CMD ["./start.sh"]

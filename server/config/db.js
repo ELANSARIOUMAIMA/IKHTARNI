@@ -6,11 +6,4 @@ const connectDB=async()=>{
     
 }
 export default connectDB
- /*dbName: "IKHTARNI",  // majuscules comme dans ta base
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})/
-/*mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log("Database Connected"))
-  .catch((err) => console.error("Database connection error:", err));
-*/
+ 
