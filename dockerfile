@@ -17,11 +17,18 @@ RUN pip install --no-cache-dir -r requirements.txt
 # 5. Copier tout le code du projet 
 COPY . .
 
-# 6. Donner les droits d’exécution à start.sh
+# 6. Installer les dépendances Node pour le serveur
+WORKDIR /IKHTARNI/server
+RUN npm install
+
+# 7. Revenir au répertoire principal
+WORKDIR /IKHTARNI
+
+# 8. Donner les droits d’exécution à start.sh
 RUN chmod +x start.sh
 
-# 7. Exposer les ports utilisés par tes serveurs Node
+# 9. Exposer les ports utilisés par tes serveurs Node
 EXPOSE 5001 5000
 
-# 8. Lancer les deux serveurs Node
+# 10. Lancer les deux serveurs Node
 CMD ["./start.sh"]
