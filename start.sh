@@ -3,4 +3,4 @@
 node server/server.js &
 
 # Lancer le serveur dummy (score)
-node server/dummyserver.js
+#node server/dummyserver.js

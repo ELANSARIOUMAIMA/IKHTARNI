@@ -28,7 +28,7 @@ WORKDIR /IKHTARNI
 RUN chmod +x start.sh
 
 # 9. Exposer les ports utilisés par tes serveurs Node
-EXPOSE 5001 5000
+EXPOSE 5000
 
 # 10. Lancer les deux serveurs Node
 CMD ["./start.sh"]
