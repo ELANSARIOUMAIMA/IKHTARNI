@@ -29,9 +29,11 @@ export const postScore = async (req, res) => {
 
     // Call Python script
     const scriptPath = path.join(__dirname, "../resume_matcher/resume_score.py");
+    
 
     // IMPORTANT: in Docker, use "python3" instead of hardcoding venv
     const pythonProcess = spawn("python3", [scriptPath, tmpPath, job.description]);
+    
 
     let score = "0";
     pythonProcess.stdout.on("data", (data) => (score += data.toString()));

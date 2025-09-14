@@ -89,7 +89,7 @@ const ViewApplications = () => {
   // function to Get the score
   const calculateScore = async (userId, jobId) => {
     try {
-      const { data } = await axios.post(backendUrl+"api/scores",{ userId, jobId },{ headers: { token: companyToken } }
+      const { data } = await axios.post(backendUrl+"/api/scores",{ userId, jobId },{ headers: { token: companyToken } }
       );
 
       if (data.success) {
