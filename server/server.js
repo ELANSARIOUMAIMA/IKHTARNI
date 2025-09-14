@@ -1,5 +1,6 @@
 import './config/instrument.js'
 import * as Sentry from "@sentry/node"
+import os from 'os';
 
 import express from 'express'
 import cors from 'cors'
@@ -78,27 +79,14 @@ app.get("/debug-sentry", function mainHandler(req, res) {
 app.post('/webhooks',clerkWebhooks)
 
 
-
-
 app.use('/api/company',companyRoutes)
 app.use('/api/jobs',jobRoutes)
 app.use('/api/users',userRoutes)
 
 
-
-
-
-
-
-
-
 // ES Modules __dirname
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-
-
-
 
 app.post("/scores", async (req, res) => {
   try {
@@ -118,7 +106,11 @@ app.post("/scores", async (req, res) => {
 
     // Lancer le script Python
     const scriptPath = path.join(__dirname, "../resume_matcher/resume_score.py");
-    const pythonPath = path.join(__dirname, '..', 'resume_matcher', 'venv', 'Scripts', 'python.exe');
+    //const pythonPath = path.join(__dirname, '..', 'resume_matcher', 'venv', 'Scripts', 'python.exe');
+    const pythonPath = os.platform() === 'win32'
+    ? path.join(__dirname, '..', 'resume_matcher', 'venv', 'Scripts', 'python.exe')
+    : 'python3';
+
 
     console.log("Running Python script:");
     console.log("Python path:", pythonPath);
