@@ -6,6 +6,8 @@ import {useUser,useAuth} from '@clerk/clerk-react'
 export const AppContext=createContext()
 export const AppContextProvider=(props)=>{
     const backendUrl = import.meta.env.VITE_BACKEND_URL
+
+    const scoreUrl = import.meta.env.VITE_SCORE_URL
     
     
 
@@ -143,7 +145,7 @@ export const AppContextProvider=(props)=>{
             showRecuiterLogin,setShowRecuiterLogin,
             companyToken,setCompanyToken,
             companyData,setCompanyData,
-            backendUrl,
+            backendUrl,scoreUrl,
             userData,setUserData,
             userApplications,setUserApplications,
             fetchUserData,

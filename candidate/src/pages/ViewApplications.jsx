@@ -11,7 +11,7 @@ import { useContext } from 'react'
 
 
 const ViewApplications = () => {
-  const { backendUrl, companyToken } = useContext(AppContext)
+  const { backendUrl,scoreUrl, companyToken } = useContext(AppContext)
 
   const [applicants, setApplicants] = useState(false)
 
@@ -90,7 +90,7 @@ const ViewApplications = () => {
   const calculateScore = async (userId, jobId) => {
     try {
       
-      const { data } = await axios.post(backendUrl+"/scores",{ userId, jobId },{ headers: { token: companyToken } }
+      const { data } = await axios.post(scoreUrl+"/scores",{ userId, jobId },{ headers: { token: companyToken } }
       );
 
       if (data.success) {
