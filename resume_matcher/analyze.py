@@ -18,4 +18,4 @@ def input_pdf_text(pdf_path):
     print(text)
     return text
 
-input_pdf_text("resumes/resume2.pdf")
+input_pdf_text("resumes/resume1.pdf")
