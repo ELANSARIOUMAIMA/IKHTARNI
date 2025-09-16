@@ -106,7 +106,7 @@ app.post("/scores", async (req, res) => {
 
 
 app.get('/', (req, res) => {
-  res.send("API of score Working 🚀");
+  res.send("Second API of score Working 🚀");
 });
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
