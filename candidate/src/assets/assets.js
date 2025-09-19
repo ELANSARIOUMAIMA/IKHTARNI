@@ -11,7 +11,9 @@ import list_check from "./list_check.png";
 
 
 
+
 import profile_img from "./profile_img.png";
+
 import app_main_img from "./app_main_img.png";
 import cross_icon from './cross_icon.svg';
 import location_icon from './location_icon.svg';
@@ -55,6 +57,7 @@ export const assets = {
     ibm_logo,
     bcgx_logo,
     oracle_logo,
+    
    
     app_main_img,
     play_store,
